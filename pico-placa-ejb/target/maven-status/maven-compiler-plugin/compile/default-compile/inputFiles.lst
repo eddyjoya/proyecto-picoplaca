@@ -1,0 +1,11 @@
+/home/eddie/NetBeansProjects/pico-placa/pico-placa-ejb/src/main/java/com/proyecto/picoplaca/dao/RegistroPlacaDao.java
+/home/eddie/NetBeansProjects/pico-placa/pico-placa-ejb/src/main/java/com/proyecto/picoplaca/daoUI/UIGenericDao.java
+/home/eddie/NetBeansProjects/pico-placa/pico-placa-ejb/src/main/java/com/proyecto/picoplaca/service/RegistroPlacaService.java
+/home/eddie/NetBeansProjects/pico-placa/pico-placa-ejb/src/main/java/com/proyecto/picoplaca/daoUI/UIRegistroPlacaDao.java
+/home/eddie/NetBeansProjects/pico-placa/pico-placa-ejb/src/main/java/com/proyecto/picoplaca/tester/TesterEJB.java
+/home/eddie/NetBeansProjects/pico-placa/pico-placa-ejb/src/main/java/com/proyecto/picoplaca/excepciones/EntidadNoGrabadaExcepcion.java
+/home/eddie/NetBeansProjects/pico-placa/pico-placa-ejb/src/main/java/com/proyecto/picoplaca/serviceUI/UIRegistroPlacaService.java
+/home/eddie/NetBeansProjects/pico-placa/pico-placa-ejb/src/main/java/com/proyecto/picoplaca/excepciones/EntidadNoEncontradaExcepcion.java
+/home/eddie/NetBeansProjects/pico-placa/pico-placa-ejb/src/main/java/com/proyecto/picoplaca/excepciones/EntidadNoBorradaExcepcion.java
+/home/eddie/NetBeansProjects/pico-placa/pico-placa-ejb/src/main/java/com/proyecto/picoplaca/entidad/CarRegistroPlaca.java
+/home/eddie/NetBeansProjects/pico-placa/pico-placa-ejb/src/main/java/com/proyecto/picoplaca/dao/GenericDao.java

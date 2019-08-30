@@ -1,0 +1,12 @@
+com/proyecto/picoplaca/excepciones/EntidadNoEncontradaExcepcion.class
+com/proyecto/picoplaca/tester/TesterEJB.class
+com/proyecto/picoplaca/excepciones/EntidadNoBorradaExcepcion.class
+com/proyecto/picoplaca/excepciones/EntidadNoGrabadaExcepcion.class
+com/proyecto/picoplaca/dao/GenericDao.class
+com/proyecto/picoplaca/entidad/CarRegistroPlaca.class
+com/proyecto/picoplaca/serviceUI/UIRegistroPlacaService.class
+com/proyecto/picoplaca/entidad/CarRegistroPlaca_.class
+com/proyecto/picoplaca/dao/RegistroPlacaDao.class
+com/proyecto/picoplaca/service/RegistroPlacaService.class
+com/proyecto/picoplaca/daoUI/UIRegistroPlacaDao.class
+com/proyecto/picoplaca/daoUI/UIGenericDao.class
