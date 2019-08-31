@@ -23,7 +23,7 @@ import javax.persistence.Transient;
  * @author eddie
  */
 @Entity
-@Table(name = "car_registro_placa")
+@Table(name = "car_registro_placa", schema = "public")
 public class CarRegistroPlaca implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,14 +47,14 @@ public class CarRegistroPlaca implements Serializable {
 
     //VARIABLES LOCALES NO PERSISTEN EN BD
     @Transient
-    private String fechaResgistro;
+    private String fecha;
 
     public CarRegistroPlaca() {
     }
 
     @Override
     public String toString() {
-        return "CarRegistroPlaca{" + "id=" + id + ", numeroPlaca=" + numeroPlaca + ", fechaRegistro=" + fechaRegistro + ", horaRegistro=" + horaRegistro + ", fechaResgistro=" + fechaResgistro + '}';
+        return "CarRegistroPlaca{" + "id=" + id + ", numeroPlaca=" + numeroPlaca + ", fechaRegistro=" + fechaRegistro + ", horaRegistro=" + horaRegistro + ", fecha=" + fecha + '}';
     }
 
     public Long getId() {
@@ -89,12 +89,12 @@ public class CarRegistroPlaca implements Serializable {
         this.horaRegistro = horaRegistro;
     }
 
-    public String getFechaResgistro() {
-        return fechaResgistro;
+    public String getFecha() {
+        return fecha;
     }
 
-    public void setFechaResgistro(String fechaResgistro) {
-        this.fechaResgistro = fechaResgistro;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
 }

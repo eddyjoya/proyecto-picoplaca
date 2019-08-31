@@ -25,7 +25,7 @@ import javax.persistence.PersistenceException;
 public class GenericDao<T, PK extends Serializable> implements
         UIGenericDao<T, PK> {
 
-    @PersistenceContext(unitName = "comprobantesElectronicosDS")
+    @PersistenceContext(unitName = "picoplacaDS")
     protected EntityManager em;
 
     private final Class<T> type;

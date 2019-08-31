@@ -1,0 +1,109 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <!-- **********************************************************************************************************************************************************
+    TOP BAR CONTENT & NOTIFICATIONS
+    *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header black-bg">
+        <link rel="icon" href="../resources/images/wanqara.jpg"/>
+        <div class="sidebar-toggle-box">
+            <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+        </div>
+        <!--logo start-->
+        <h:link outcome="/index.xhtml" styleClass="logo" style=" font-family: Gabriola !important; font-size: 35px" title="Inicio">
+             <b>
+                <h:graphicImage  value="/resources/images/wanqara.jpg" style="width: 50px;"/>      
+                VENTAS WANQARA</b>
+         </h:link>
+        <!--logo end-->
+        <div class="nav notify-row" id="top_menu">
+            <!--  notification start -->
+            <ul class="nav top-menu">
+
+                <!-- inbox dropdown start-->
+                <li id="header_inbox_bar" class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#" title="Notificaciones">
+                        <i class="glyphicon glyphicon-globe"></i>
+                        <h:form id="cantReservacionLabOcupado">
+                            <c:if test="#{notificacionReservasLabAdminBean.totalLaboratorioOcupados()>0}">
+                                <span class="badge bg-reserva" title="Laboratorios solicitados o en uso" >#{notificacionReservasLabAdminBean.totalLaboratorioOcupados()}</span>
+                            </c:if>
+                        </h:form>
+                    </a>
+                    <ul class="dropdown-menu extended inbox">
+                        <div class="notify-arrow notify-arrow-green"></div>
+                        <li>
+                            <h:form id="cantReservacionHeadOcupado">
+                                <c:if test="#{notificacionReservasLabAdminBean.totalLaboratorioOcupados()>0}">
+                                    <p class="green">Hay #{notificacionReservasLabAdminBean.totalLaboratorioOcupados()} laboratorio/s ocupado/s  y/o reservado/s.</p>
+                                </c:if>
+                                <c:if test="#{notificacionReservasLabAdminBean.totalLaboratorioOcupados() == 0}">
+                                    <p class="green" style="color:rgba(255, 0, 0, 0.72)">No hay ningún laboratorio reservado todavía.</p>
+                                </c:if>
+                            </h:form>
+                        </li>
+                        <li>
+                            <h:form id="listCantReservacionSolicitado">
+                                <h:link rendered="#{notificacionReservasLabAdminBean.cantidadReservacionSolicitado>0}" outcome="/_adminLab/reservaLaboratorio/Reserva.xhtml" style="color: #000; padding: 5px 10px !important;">
+                                    <span class="photo"><p:graphicImage  alt="avatar" value="/resources/img/ui-danro.jpg" /></span> 
+                                    <span class="subject">
+                                        <span class="from">Solicitados</span>
+                                        <span class="time">#{notificacionReservasLabAdminBean.cantidadReservacionSolicitado} </span>
+                                    </span>
+
+                                    <span class="message">
+                                        Hay #{notificacionReservasLabAdminBean.cantidadReservacionSolicitado} solicitud/es de reserva para laboratorios.
+                                    </span>
+                                </h:link>
+                            </h:form>
+                        </li>
+                        <li>
+                            <h:form id="listCantReservacionEnUso">
+                                <h:link rendered="#{notificacionReservasLabAdminBean.cantidadReservacionEnUso>0}" outcome="/_adminLab/reservaLaboratorio/Reserva.xhtml" style="color: #000; padding: 5px 10px !important;">
+                                    <span class="photo"><p:graphicImage  alt="avatar" value="/resources/img/ajax-loader.gif" /></span> 
+                                    <span class="subject">
+                                        <span class="from">En uso</span>
+                                        <span class="time">#{notificacionReservasLabAdminBean.cantidadReservacionEnUso}</span>
+                                    </span>
+
+                                    <span class="message">
+                                        Hay #{notificacionReservasLabAdminBean.cantidadReservacionEnUso} laboratorio/s siendo utilizado.
+                                    </span>
+                                </h:link>
+                            </h:form>
+                        </li>
+                    </ul>
+                </li>
+                <!-- inbox dropdown end -->
+
+                <!--ADMIN SETTINGS SECTIONS -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" title="Mis datos" >
+                        <i class="fa fa-user "></i> <i class="fa fa-chevron-down " style="font-size: 10px;"></i>
+                    </a>
+
+                    <ul class="dropdown-menu extended1 dropdown-user">
+                        <div class="notify-arrow1 notify-arrow-green"></div>
+                       
+                      
+                        <li>      
+                            <h:form>
+                                <p:commandLink actionListener="#{controladorLogin.logout()}" styleClass="linkCerraSesion" oncomplete="logout(xhr, status, args)" title="Salir">
+                                    <i class="fa fa-sign-out"></i> Cerrar Sesión
+                                </p:commandLink>
+                            </h:form>
+                        </li>
+                    </ul>
+
+                </li>
+                <!--END ADMIN SETTINGS -->
+            </ul>
+            <!--  notification end -->
+        </div>
+    </header>
+    <!--header end-->
+</ui:composition>
+

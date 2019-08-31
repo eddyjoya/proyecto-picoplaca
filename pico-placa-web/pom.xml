@@ -2,16 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-    <artifactId>pico-placa</artifactId>
-    <groupId>com.proyecto.web</groupId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
+        <artifactId>pico-placa</artifactId>
+        <groupId>com.proyecto.web</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
     <groupId>com.proyecto.web</groupId>
     <artifactId>pico-placa-web</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-
     <name>pico-placa-web</name>
 
     <properties>
@@ -20,6 +19,17 @@
     </properties>
     
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>pico-placa-ejb</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>

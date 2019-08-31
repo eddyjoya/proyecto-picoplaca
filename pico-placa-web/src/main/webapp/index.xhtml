@@ -1,0 +1,71 @@
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+                 xmlns:h="http://java.sun.com/jsf/html"
+                 xmlns:f="http://java.sun.com/jsf/core"
+                 template="/templates/template.xhtml"
+                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                 xmlns:p="http://primefaces.org/ui"> 
+
+    <ui:define name="title">
+        <h:outputText value="PICO Y PLACA"></h:outputText>
+    </ui:define>
+    <ui:define name="content">        
+        <div id="login-page">
+            <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />     
+            <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                <p:graphicImage name="/images/ajax-loader.gif" />
+            </p:dialog>
+            <div class="container">	  	
+                <h:form styleClass="form-login">
+                    <h2 class="form-login-heading">VERIFICAR PICO Y PLACA<br/> 
+                        <br/>
+                    </h2>
+                    <div class="login-wrap">
+
+                        <!-- Prepended text-->
+                        <div class="form-group">
+                            <div class="">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-automobile" style="width: 11px;"></i></span>
+                                    <p:inputMask id="txtPlaca" styleClass="form-control" value="#{picoPlacaDM.registroPlaca.numeroPlaca}" 
+                                                 requiredMessage="¡Ingrese la placa!"  placeholder="Ingrese la placa"
+                                                 style="text-transform: uppercase" required="true"
+                                                 mask="aa*-9999"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FECHA text-->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-calendar" style="width: 11px;"></i></span>
+
+                                <p:inputMask id="txtFecha" styleClass="form-control" value="#{picoPlacaDM.registroPlaca.fecha}" 
+                                             requiredMessage="¡Ingrese la fecha!" required="true"
+                                             style="text-transform: uppercase" placeholder="Ingrese la fecha"
+                                             mask="99-99-9999"/>
+                            </div>                            
+                        </div>
+                        <!-- hora text-->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-tachometer" style="width: 11px;"></i></span>
+                                <p:calendar  id="txtHora" value="#{picoPlacaDM.registroPlaca.horaRegistro}" 
+                                            requiredMessage="¡Ingrese la hora!" rendered="true" 
+                                            style="text-transform: uppercase;"
+                                            pattern="HH:mm" timeOnly="true" placeholder="Ingrese la hora"  />
+
+
+                            </div>                            
+                        </div>
+                        <p:commandLink id="btnIniciar" actionListener="#{picoPlacaControlador.verificarPermisoCirculacion()}" 
+                                       update=":mensajes" styleClass="btn btn-theme btn-block" >
+                            <i class="fa fa-check-circle"></i> Verificar
+                        </p:commandLink>                        
+                        <p:defaultCommand target="btnIniciar" />
+                    </div>                
+                </h:form>
+            </div>
+        </div>
+
+    </ui:define>
+</ui:composition>

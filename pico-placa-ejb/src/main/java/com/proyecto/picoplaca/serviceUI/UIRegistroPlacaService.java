@@ -6,6 +6,7 @@
 package com.proyecto.picoplaca.serviceUI;
 
 import com.proyecto.picoplaca.entidad.CarRegistroPlaca;
+import com.proyecto.picoplaca.excepciones.EntidadNoGrabadaExcepcion;
 import javax.ejb.Local;
 
 /**
@@ -15,9 +16,9 @@ import javax.ejb.Local;
 @Local
 public interface UIRegistroPlacaService {
 
-    public void guardar(CarRegistroPlaca registroPlaca);
+    public void guardar(CarRegistroPlaca registroPlaca) throws EntidadNoGrabadaExcepcion;
 
     public void registrarPlaca(CarRegistroPlaca registroPlaca);
 
-    public void verificarCirculacionAuto(CarRegistroPlaca registroPlaca);
+    public Boolean verificaPermisoCirculacion(CarRegistroPlaca registroPlaca);
 }
