@@ -84,8 +84,20 @@ public class RegistroPlacaService implements UIRegistroPlacaService {
     }
 
     private void consultarHoraPicoPlaca(Date hora) {
-        boolean antes7 = LocalTime.parse(hora.toString()).isBefore(LocalTime.parse("07:00"));
-        System.out.println(antes7); // true
+        Date hora1 = Utils.transformarStringAHoras("07:00:00");
+        Date hora2 = Utils.transformarStringAHoras("09:30:00");
 
+        Date hora3 = Utils.transformarStringAHoras("16:00:00");
+        Date hora4 = Utils.transformarStringAHoras("19:30:00");
+        Boolean horaPico1 = false, horaPico2 = false;
+        if ((hora.before(hora1) || (hora.after(hora2)))) {
+            horaPico1 = true;
+        }
+        if ((hora.before(hora3) || (hora.after(hora4)))) {
+            horaPico2 = true;
+        }
+        if ((horaPico1) && (horaPico2)) {
+            System.out.println("Puede circular");
+        }
     }
 }

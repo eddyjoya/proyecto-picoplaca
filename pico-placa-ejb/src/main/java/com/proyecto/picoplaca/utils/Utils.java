@@ -5,9 +5,12 @@
  */
 package com.proyecto.picoplaca.utils;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,5 +29,16 @@ public class Utils {
         }
 
         return fecha;
+    }
+
+    public static Date transformarStringAHoras(String horaString) {
+        Date hora = null;
+        DateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
+        try {
+            hora = dateFormat.parse(horaString);
+        } catch (ParseException ex) {
+            Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return hora;
     }
 }
