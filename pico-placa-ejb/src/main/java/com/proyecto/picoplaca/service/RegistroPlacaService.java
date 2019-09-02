@@ -5,20 +5,15 @@
  */
 package com.proyecto.picoplaca.service;
 
-import com.proyecto.picoplaca.daoUI.UIRegistroPlacaDao;
 import com.proyecto.picoplaca.entidad.CarRegistroPlaca;
+import com.proyecto.picoplaca.excepciones.EntidadNoEncontradaExcepcion;
 import com.proyecto.picoplaca.excepciones.EntidadNoGrabadaExcepcion;
 import com.proyecto.picoplaca.serviceUI.UIRegistroPlacaService;
 import com.proyecto.picoplaca.utils.Utils;
-import java.text.ParseException;
-import java.time.LocalTime;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.AccessTimeout;
 import javax.ejb.ConcurrencyManagement;
 import javax.ejb.ConcurrencyManagementType;
-import javax.ejb.EJB;
 import javax.ejb.Lock;
 import javax.ejb.LockType;
 import javax.ejb.Singleton;
@@ -33,31 +28,28 @@ import javax.ejb.Singleton;
 @Lock(LockType.WRITE)
 public class RegistroPlacaService implements UIRegistroPlacaService {
 
-    @EJB
-    UIRegistroPlacaDao registroPlacaDao;
-
     @Override
-    public void guardar(CarRegistroPlaca registroPlaca) throws EntidadNoGrabadaExcepcion {
-        if (registroPlaca != null) {
-            registroPlacaDao.actualizar(registroPlaca);
-        } else {
-            registroPlacaDao.crear(registroPlaca);
-        }
-
-    }
-
-    @Override
-    public void registrarPlaca(CarRegistroPlaca registroPlaca) {
-
-    }
-
-    @Override
-    public Boolean verificaPermisoCirculacion(CarRegistroPlaca registroPlaca) {
-        String campoBusquedaCodigo = registroPlaca.getNumeroPlaca().substring(registroPlaca.getNumeroPlaca().length() - 1,
+    public String verificaPermisoCirculacion(CarRegistroPlaca registroPlaca)
+            throws EntidadNoEncontradaExcepcion, EntidadNoGrabadaExcepcion {
+        /**
+         * MÉTODO PARA VALIDAR LA INFORMACIÓN INGRESADA
+         */
+        validaInformacionAProcesar(registroPlaca);
+        String mensajeRespuesta, campoBusquedaCodigo;
+        /**
+         * MÉTODO PARA OBTENER EL ÚLTIMO DIGITO DE LA PLACA INGRESADA
+         */
+        campoBusquedaCodigo = registroPlaca.getNumeroPlaca().substring(registroPlaca.getNumeroPlaca().length() - 1,
                 registroPlaca.getNumeroPlaca().length());
-        System.out.println("DÍA: " + consultarDiaPicoPlaca(campoBusquedaCodigo));
-        consultarHoraPicoPlaca(registroPlaca.getHoraRegistro());
-        return false;
+
+        mensajeRespuesta = "DÍA " + consultarDiaPicoPlaca(campoBusquedaCodigo) + " "
+                + Utils.darFormatoHoraSring(registroPlaca.getHoraRegistro());
+        if (consultaPermisoCirculacion(registroPlaca.getHoraRegistro())) {
+            mensajeRespuesta = mensajeRespuesta + " TIENE PERMISO DE CIRCULACIÓN";
+        } else {
+            mensajeRespuesta = mensajeRespuesta + " NO TIENE PERMISO DE CIRCULACIÓN";
+        }
+        return mensajeRespuesta;
     }
 
     private String consultarDiaPicoPlaca(String digitoVericador) {
@@ -83,21 +75,42 @@ public class RegistroPlacaService implements UIRegistroPlacaService {
         return null;
     }
 
-    private void consultarHoraPicoPlaca(Date hora) {
+    private void validaInformacionAProcesar(CarRegistroPlaca placa)
+            throws EntidadNoEncontradaExcepcion {
+        Date fecha = Utils.transformarStringADate(placa.getFecha());
+        if (fecha == null) {
+            throw new EntidadNoEncontradaExcepcion("¡Fecha no válida!");
+        }
+    }
+
+    private boolean consultaPermisoCirculacion(Date hora) {
+        Boolean horaPico1 = false, horaPico2 = false, puedeCircular = false;
+        /**
+         * INSTANCIAR VARIABLES DE HORAS PICO*
+         */
         Date hora1 = Utils.transformarStringAHoras("07:00:00");
         Date hora2 = Utils.transformarStringAHoras("09:30:00");
-
         Date hora3 = Utils.transformarStringAHoras("16:00:00");
         Date hora4 = Utils.transformarStringAHoras("19:30:00");
-        Boolean horaPico1 = false, horaPico2 = false;
+        /**
+         * PICO Y PLACA DE 7:OO A 9:30
+         */
         if ((hora.before(hora1) || (hora.after(hora2)))) {
             horaPico1 = true;
         }
+        /**
+         * PICO Y PLACA DE 16:OO A 19:30
+         */
         if ((hora.before(hora3) || (hora.after(hora4)))) {
             horaPico2 = true;
         }
+        /**
+         * SI LA HORA INGRESADA ESTA FUERA DEL RANGO DE LAS HORAS QUE APLICA
+         * PICO Y PLACA, LA PLACA INGRESADA PUEDE CIRCULAR
+         */
         if ((horaPico1) && (horaPico2)) {
-            System.out.println("Puede circular");
+            puedeCircular = true;
         }
+        return puedeCircular;
     }
 }

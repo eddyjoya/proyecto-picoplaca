@@ -22,31 +22,16 @@ import javax.persistence.Transient;
  *
  * @author eddie
  */
-@Entity
-@Table(name = "car_registro_placa", schema = "public")
 public class CarRegistroPlaca implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "car_id")
     private Long id;
-
-    @Column(name = "car_placa", nullable = true)
     private String numeroPlaca;
-
-    @Column(name = "car_fecha_registro")
     @Temporal(TemporalType.DATE)
     private Date fechaRegistro;
-
-    @Column(name = "car_hora_registro")
     @Temporal(TemporalType.TIME)
     private Date horaRegistro;
-
-    //VARIABLES LOCALES NO PERSISTEN EN BD
-    @Transient
     private String fecha;
 
     public CarRegistroPlaca() {

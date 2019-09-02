@@ -24,7 +24,7 @@ public abstract class BaseControlador implements Serializable {
      * @param resumen
      */
     protected void addErrorMessage(final String resumen) {
-        FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Advertencia", resumen);
+        FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_FATAL, "Advertencia", resumen);
         FacesContext.getCurrentInstance().addMessage(null, facesMsg);
     }
 

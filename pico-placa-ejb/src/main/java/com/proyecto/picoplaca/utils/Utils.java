@@ -17,20 +17,30 @@ import java.util.logging.Logger;
  * @author Eddie-PC
  */
 public class Utils {
-
+    
     public static Date transformarStringADate(String fechaString) {
         SimpleDateFormat formatoDelTexto;
-        formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
-        Date fecha = null;
+        formatoDelTexto = new SimpleDateFormat("dd-MM-yyyy");
         try {
-            fecha = formatoDelTexto.parse(fechaString);
+            formatoDelTexto.setLenient(false);
+            return formatoDelTexto.parse(fechaString);
+            
         } catch (ParseException ex) {
-            ex.getErrorOffset();
+            return null;
         }
-
-        return fecha;
+        
     }
-
+    
+    public static String darFormatoHoraSring(Date fecha) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+        return dateFormat.format(fecha);
+    }
+    
+    public static String darFormatoFechaSring(Date fecha) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return dateFormat.format(fecha);
+    }
+    
     public static Date transformarStringAHoras(String horaString) {
         Date hora = null;
         DateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");

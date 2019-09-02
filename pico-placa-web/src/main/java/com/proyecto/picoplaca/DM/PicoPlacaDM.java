@@ -21,6 +21,7 @@ public class PicoPlacaDM {
      * DECLARACION DE VARIABLES
      */
     private CarRegistroPlaca registroPlaca = new CarRegistroPlaca();
+    private String mensajeRespuesta = "";
 
     public CarRegistroPlaca getRegistroPlaca() {
         return registroPlaca;
@@ -28,6 +29,14 @@ public class PicoPlacaDM {
 
     public void setRegistroPlaca(CarRegistroPlaca registroPlaca) {
         this.registroPlaca = registroPlaca;
+    }
+
+    public String getMensajeRespuesta() {
+        return mensajeRespuesta;
+    }
+
+    public void setMensajeRespuesta(String mensajeRespuesta) {
+        this.mensajeRespuesta = mensajeRespuesta;
     }
 
 }

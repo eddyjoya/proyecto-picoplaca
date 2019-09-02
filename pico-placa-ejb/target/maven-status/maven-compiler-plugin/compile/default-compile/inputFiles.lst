@@ -1,11 +1,7 @@
-C:\Users\Eddie-PC\Documents\NetBeansProjects\proyecto-picoplaca\pico-placa-ejb\src\main\java\com\proyecto\picoplaca\dao\GenericDao.java
 C:\Users\Eddie-PC\Documents\NetBeansProjects\proyecto-picoplaca\pico-placa-ejb\src\main\java\com\proyecto\picoplaca\excepciones\EntidadNoBorradaExcepcion.java
-C:\Users\Eddie-PC\Documents\NetBeansProjects\proyecto-picoplaca\pico-placa-ejb\src\main\java\com\proyecto\picoplaca\daoUI\UIRegistroPlacaDao.java
 C:\Users\Eddie-PC\Documents\NetBeansProjects\proyecto-picoplaca\pico-placa-ejb\src\main\java\com\proyecto\picoplaca\excepciones\EntidadNoGrabadaExcepcion.java
-C:\Users\Eddie-PC\Documents\NetBeansProjects\proyecto-picoplaca\pico-placa-ejb\src\main\java\com\proyecto\picoplaca\dao\RegistroPlacaDao.java
 C:\Users\Eddie-PC\Documents\NetBeansProjects\proyecto-picoplaca\pico-placa-ejb\src\main\java\com\proyecto\picoplaca\entidad\CarRegistroPlaca.java
 C:\Users\Eddie-PC\Documents\NetBeansProjects\proyecto-picoplaca\pico-placa-ejb\src\main\java\com\proyecto\picoplaca\excepciones\EntidadNoEncontradaExcepcion.java
-C:\Users\Eddie-PC\Documents\NetBeansProjects\proyecto-picoplaca\pico-placa-ejb\src\main\java\com\proyecto\picoplaca\daoUI\UIGenericDao.java
 C:\Users\Eddie-PC\Documents\NetBeansProjects\proyecto-picoplaca\pico-placa-ejb\src\main\java\com\proyecto\picoplaca\tester\TesterEJB.java
 C:\Users\Eddie-PC\Documents\NetBeansProjects\proyecto-picoplaca\pico-placa-ejb\src\main\java\com\proyecto\picoplaca\utils\Utils.java
 C:\Users\Eddie-PC\Documents\NetBeansProjects\proyecto-picoplaca\pico-placa-ejb\src\main\java\com\proyecto\picoplaca\serviceUI\UIRegistroPlacaService.java

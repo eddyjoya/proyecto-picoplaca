@@ -16,6 +16,9 @@
             </p:dialog>
             <div class="container">	  	
                 <h:form styleClass="form-login">
+                    <p:messages id="messages" showDetail="true" closable="true">
+
+                    </p:messages>
                     <h2 class="form-login-heading">VERIFICAR PICO Y PLACA<br/> 
                         <br/>
                     </h2>
@@ -50,19 +53,21 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-tachometer" style="width: 11px;"></i></span>
                                 <p:calendar  id="txtHora" value="#{picoPlacaDM.registroPlaca.horaRegistro}" 
-                                            requiredMessage="¡Ingrese la hora!" rendered="true" 
-                                            style="text-transform: uppercase;"
-                                            pattern="HH:mm" timeOnly="true" placeholder="Ingrese la hora"  />
+                                             requiredMessage="¡Ingrese la hora!" required="true"
+                                             style="text-transform: uppercase;"
+                                             pattern="HH:mm" timeOnly="true" placeholder="Ingrese la hora"  />
 
 
                             </div>                            
                         </div>
                         <p:commandLink id="btnIniciar" actionListener="#{picoPlacaControlador.verificarPermisoCirculacion()}" 
-                                       update=":mensajes" styleClass="btn btn-theme btn-block" >
+                                       update=":mensajes, msg" styleClass="btn btn-theme btn-block" >
                             <i class="fa fa-check-circle"></i> Verificar
                         </p:commandLink>                        
                         <p:defaultCommand target="btnIniciar" />
-                    </div>                
+                    </div>     
+                    <p:outputLabel id="msg" value="#{picoPlacaDM.mensajeRespuesta}" 
+                                   style="font-size: x-large; font-weight: bolder;  "/>
                 </h:form>
             </div>
         </div>

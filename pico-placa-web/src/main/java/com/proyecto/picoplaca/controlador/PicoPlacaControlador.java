@@ -6,6 +6,8 @@
 package com.proyecto.picoplaca.controlador;
 
 import com.proyecto.picoplaca.DM.PicoPlacaDM;
+import com.proyecto.picoplaca.excepciones.EntidadNoEncontradaExcepcion;
+import com.proyecto.picoplaca.excepciones.EntidadNoGrabadaExcepcion;
 import com.proyecto.picoplaca.serviceUI.UIRegistroPlacaService;
 import com.proyecto.picoplaca.utils.BaseControlador;
 import javax.ejb.EJB;
@@ -37,11 +39,10 @@ public class PicoPlacaControlador extends BaseControlador {
      * DECLARACIÓN DE METODOS
      */
     public void verificarPermisoCirculacion() {
-        Boolean tienePermiso = registroPlacaService.verificaPermisoCirculacion(picoPlacaDM.getRegistroPlaca());
-        if (tienePermiso) {
-
-        } else {
-            addErrorMessage("NO TIENE PERMISO DE CIRCULACIÓN");
+        try {
+            picoPlacaDM.setMensajeRespuesta(registroPlacaService.verificaPermisoCirculacion(picoPlacaDM.getRegistroPlaca()));
+        } catch (EntidadNoEncontradaExcepcion | EntidadNoGrabadaExcepcion ex) {
+            addErrorMessage(ex.getMessage());
         }
     }
 
